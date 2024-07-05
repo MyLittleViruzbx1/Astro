@@ -1,0 +1,37 @@
+---
+// import PuchamonesCard from "../components/puchamones/PuchamonesCard.astro";
+import PuchamonesCard from "@components/puchamones/PuchamonesCard.astro";
+import type { PokemonListResponse } from "../interfaces/list.response";
+import MainLayout from "../layaouts/MainLayout.astro"
+
+const title = 'Pokemon Static | Home';
+
+const resp = await fetch('https://pokeapi.co/api/v2/pokemon/');
+
+const data = await resp.json() as PokemonListResponse;
+console.log('data: ', data);
+
+
+---
+
+
+<MainLayout title={ title }>
+
+	<h1 class="text-3xl text-center"> Lista de Puchamones </h1>
+	<hr>
+
+	<section
+	aria-label="Listado de Puchamones"
+	class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 gap-4 mt-5"
+   >
+
+	{data.results.map(({name, url}) => (
+	<PuchamonesCard name={name} url={url} />
+	)
+)}
+
+	</section>
+		
+</MainLayout>
+
+

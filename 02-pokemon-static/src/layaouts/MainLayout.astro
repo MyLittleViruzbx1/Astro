@@ -1,0 +1,44 @@
+---
+// import { ViewTransitions } from 'astro:transitions';
+import {siteInfo} from 'src/components/consts/siteInfo'
+
+interface Props {
+    title?: string;
+	image?: string;
+	descripcion?: string;
+}
+
+// const title = 'Podemon Static | Home';
+siteInfo
+const {title = siteInfo.title, descripcion = siteInfo.descripcion, image,} = Astro.props
+
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="descripcion" content={descripcion}>
+		<meta name="author" content={'Myz'}> 
+		<meta property="og:title" content={title}>
+		<meta property="og:description" content={descripcion}}>
+		<meta property="og:image" content={image}>
+		<title>{ title }</title>
+		<!-- <ViewTransitions /> 	 -->
+		<style>
+			@view-transition {
+			  navigation: auto; /* enabled! */
+			}
+		  </style>
+	</head>
+	<body class="bg-slate-500 text-slat m-auto max-w-3xl">
+		
+        <main class="mt-10">
+            <slot />
+        </main>
+
+
+	</body>
+</html>
