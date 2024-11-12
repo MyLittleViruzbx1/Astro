@@ -1,16 +1,16 @@
 ---
-
+import MainLayout from "../layouts/MainLayout.astro";
+import CustomTitle from "./components/CustomTitle.astro";
+const { title } = Astro.props;
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>about</title>
-	</head>
-	<body>
-		<h1>about GT</h1>
-	</body>
-</html>
+<MainLayout title="Sobre nosotros">
+  <h1>About</h1>
+  <CustomTitle title="Vamo a programar" />
+</MainLayout>
+
+<style is:global>
+  h1 {
+    color: orange;
+  }
+</style>
