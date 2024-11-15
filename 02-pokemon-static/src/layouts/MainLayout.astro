@@ -1,16 +1,8 @@
 ---
-import { ViewTransitions } from "astro:transitions";
-import Navbar from "../pages/components/Navbar.astro";
-
-import "../style/global.css";
-
 interface Props {
   title: string;
-  Age?: number;
-  isActive?: boolean;
 }
-
-const { title, Age, isActive } = Astro.props;
+const { title } = Astro.props;
 ---
 
 <html lang="en">
@@ -20,12 +12,10 @@ const { title, Age, isActive } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <ViewTransitions />
   </head>
+  <body class="bg-slate-800 text-slate-100 m-auto max-w-3xl">
+    <main class="mt-10">
+      <slot />
+    </main>
+  </body>
 </html>
-<body>
-  <Navbar />
-  <main>
-    <slot />
-  </main>
-</body>
